@@ -19,6 +19,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int _counter = 0;
+
+  void _counterIncrement() {
+    setState(() {
+      _counter ++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -30,23 +39,21 @@ class _HomePageState extends State<HomePage> {
           ),
           body: new Container(
             alignment: Alignment.center,
-            child: new Container(
-              color: Colors.blue,
-              width: 300,
-              height: 300,
-              alignment: Alignment.bottomRight,
-              child: new Container(
-                alignment: Alignment.topLeft,
-                color: Colors.lightBlueAccent,
-                width: 150,
-                height: 150,
-                padding: EdgeInsets.all(20.0),
-                child: new Icon(Icons.android, color: Colors.red,),
-              ),
+            child: new Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                new Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                  size: 100,
+                ),
+                new Icon(Icons.check_circle, color: Colors.red,),
+                new Text(_counter.toString())
+              ],
             ),
           ),
           floatingActionButton: new FloatingActionButton(
-            onPressed: null,
+            onPressed: _counterIncrement,
             tooltip: '这是一个提示',
             child: new Icon(Icons.add),
             backgroundColor: Colors.blue,
