@@ -94,7 +94,28 @@ class _HomePageState extends State<HomePage> {
               onChanged: changeSwitch,
               secondary: new Icon(Icons.message, color: Colors.blue,),
               title: new Text('新消息提醒'),
-            )
+            ),
+            new Builder(builder: (BuildContext context) {
+              return new CupertinoButton(
+                  child: new Text('点我'),
+                  onPressed: () {
+
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        debugPrint(context.toString());
+                        return new SimpleDialog(
+                          title: new Text('hello dialog'),
+                          children: <Widget>[
+                            new Text('正文~~~~~~~~~~~~~~~~~~~~~'),
+                            new RaisedButton(onPressed: null, child: new Text('关闭'),)
+                          ],
+                        );
+                      },
+                    );
+                  }
+              );
+            }),
           ],
         ),
       )
